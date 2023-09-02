@@ -20,7 +20,7 @@ deque<deque<string>> allConstruct(deque<string> words, string target){
     return result;
 }
 
-int main() {
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);

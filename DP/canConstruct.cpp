@@ -15,7 +15,7 @@ bool canConstruct(string word, vector<string> words, unordered_map<string,int>& 
     return false;
 }
 
-int main() {
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);

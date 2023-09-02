@@ -17,7 +17,7 @@ bool checkStrings(string s1, string s2) {
     return (s1Oddmp == s2Oddmp) && (s1Evenmp == s2Evenmp);
 }
 
-int main() {
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
