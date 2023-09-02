@@ -9,7 +9,7 @@ vector<int> bestSum(vector<int>& array, int target){
     for(int num : array){
         int remainder = target - num;
         vector<int> remainderCombination = bestSum(array, remainder);
-        if(remainderCombination[0] != -1){
+        if(remainderCombination.size() > 0 && remainderCombination[0] != -1){
             vector<int> combination = remainderCombination;
             combination.push_back(num);
             if(bestCombination.size() == 0 || combination.size() < bestCombination.size()){
@@ -17,6 +17,8 @@ vector<int> bestSum(vector<int>& array, int target){
             }
         }
     }
+
+    for(int n : bestCombination) cout << n << " ";
 
     return bestCombination;
 }
