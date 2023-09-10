@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -14,8 +15,7 @@ int main() {
         adjList[u].push_back(v);
         adjList[v].push_back(u);
     }
-    vector<bool> visited(numberOfNodes+1, false);
-    
+
 
     return 0;
 }
