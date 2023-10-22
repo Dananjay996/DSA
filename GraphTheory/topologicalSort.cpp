@@ -16,7 +16,7 @@ void dfs(vector<vector<int>> adjList, vector<bool>& visited, int node, vector<in
 vector<int> topologicalSort(vector<vector<int>> adjList, int startNode){
     vector<bool> visited(adjList.size(), false);
     int n = adjList.size();
-    vector<int> ordering;
+    vector<int> ordering(n);
     int i = n-1;
 
     for(int j=0; j<n; j++){
@@ -47,6 +47,13 @@ int main() {
         adjList[u].push_back(v);
         adjList[v].push_back(u);
     } 
+    for(int i=0; i<numberOfEdges; i++){
+      for(auto v : adjList[i]){
+          cout << v << " ";   
+      }
+      cout << endl;
+    } 
+
     vector<bool> visited(numberOfNodes+1, false);
 
     vector<int> ordering = topologicalSort(adjList, startNode);

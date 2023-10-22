@@ -4,7 +4,25 @@ using namespace std;
 int numberOfNodes, numberOfEdges, startNode;
 vector<vector<int>> adjList(numberOfNodes+1);
 
+vector<int> solve(int startNode){
+  vector<bool> visited(numberOfNodes,false);
+  queue<int> q;
+  q.push(startNode);
+  visited[startNode] = true;
+  while(!q.empty()){
+    int node = q.front();
+    q.pop();
 
+    if(!visited[node]){
+      visited[node] = true;
+    }
+
+  }
+}
+
+vector<int> bfs(int startNode, int endNode){
+  vector<int> prev = solve(startNode);
+}
 
 int main() {
     ios_base::sync_with_stdio(false);
