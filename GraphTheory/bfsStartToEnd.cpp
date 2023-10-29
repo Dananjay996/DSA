@@ -9,19 +9,43 @@ vector<int> solve(int startNode){
   queue<int> q;
   q.push(startNode);
   visited[startNode] = true;
+  vector<int> prev(numberOfNodes,-1);
   while(!q.empty()){
     int node = q.front();
     q.pop();
+    vector<int> neighbours = adjList[node];
 
-    if(!visited[node]){
-      visited[node] = true;
+    for(int vertex : neighbours){
+      if(!visited[vertex]){
+        q.push(vertex);
+        prev[vertex] = node;
+        visited[vertex] = true;
+      }
     }
-
   }
+
+  return prev;
+}
+
+
+vector<int> reconstructPath(int startNode, vector<int> prev, int endNode){
+  vector<int> path;
+
+  for(int position = endNode; position != -1; position = prev[position]){
+    path.push_back(position);
+  }
+
+  reverse(path.begin(),path.end());
+
+  if(path[0] == startNode){
+    return path;
+  }
+  return {};
 }
 
 vector<int> bfs(int startNode, int endNode){
   vector<int> prev = solve(startNode);
+  return reconstructPath(startNode,prev,endNode);
 }
 
 int main() {
