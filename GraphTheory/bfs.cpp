@@ -1,6 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void bfs(vector<vector<int>> adjList, int startNode){
+    vector<bool> visited(adjList.size(), false);
+    queue<int> q;
+    q.push(startNode);
+    visited[startNode] = true;
+    while(!q.empty()){
+        int node = q.front();
+        q.pop();
+        cout << node << " ";
+        for(int i=0; i<adjList[node].size(); i++){
+            if(!visited[adjList[node][i]]){
+                q.push(adjList[node][i]);
+                visited[adjList[node][i]] = true;
+            }
+        }
+    }
+    cout << endl;
+}
+
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -16,6 +35,7 @@ int main() {
         adjList[v].push_back(u);
     }
 
+    bfs(adjList, startNode);
 
     return 0;
 }
