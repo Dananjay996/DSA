@@ -3,7 +3,6 @@ using namespace std;
 
 deque<deque<string>> allConstruct(deque<string> words, string target){
     if(target == "") return {{}};
-
     deque<deque<string>> result;
 
     for(string w : words){
