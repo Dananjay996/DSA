@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
-using namespace std;
 
-void dfs(vector<vector<int>> adjList, vector<bool>& visited, int node, vector<int>& visitedNodes){
+void dfs(std::vector<vector<int>> adjList, vector<bool>& visited, int node, vector<int>& visitedNodes){
     visited[node] = true;
 
     for(int neighbour : adjList[node]){
@@ -29,21 +28,23 @@ ordering[1] = 3, then it goes back again.
 ordering[0] = 1, and the loop ends.
 
 Final ordering array = {1,3,5,2,4,6}
-another valid ordering could be, {}
-
+another valid ordering could be, {1,2,4,3,5,6}
 */
 
-vector<int> topologicalSort(vector<vector<int>> adjList, int startNode){
-    vector<bool> visited(adjList.size(), false);
+std::vector<int> topologicalSort(std::vector<std::vector<int>> adjList, int startNode, int initialStartNode){
+    std::vector<bool> visited(adjList.size(), false);
     int n = adjList.size();
-    vector<int> ordering(n);
+    std::vector<int> ordering(n);
     int i = n-1;
 
     for(int j=0; j<n; j++){
         if(!visited[j]){
-            vector<int> visitedNodes;
+            std::vector<int> visitedNodes;
             dfs(adjList, visited, j, visitedNodes);
             for(int node: visitedNodes){
+                if(node == initialStartNode){
+                  std::cout << initialStartNode << " Visited again" << std::endl;
+                }
                 ordering[i] = node;
                 i--;
             }
@@ -55,32 +56,25 @@ vector<int> topologicalSort(vector<vector<int>> adjList, int startNode){
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    int numberOfNodes, numberOfEdges, startNode;
-    cin >> numberOfNodes >> numberOfEdges >> startNode;
-    vector<vector<int>> adjList(numberOfNodes+1);
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
+    std::cout.tie(NULL);
+    int numberOfNodes, numberOfEdges;
+    std::cin >> numberOfNodes >> numberOfEdges;
+    std::vector<std::vector<int>> adjList(numberOfNodes);
     for(int i=0; i<numberOfEdges; i++){
         int u,v;
-        cin >> u >> v;
+        std::cin >> u >> v;
         adjList[u].push_back(v);
-        adjList[v].push_back(u);
     } 
-    for(int i=0; i<numberOfEdges; i++){
-      for(auto v : adjList[i]){
-          cout << v << " ";   
+
+    for(int i=0; i<numberOfNodes; i++){
+      std::vector<int> ordering = topologicalSort(adjList,i,i);
+      for(int node: ordering){
+          std::cout << node << " ";
       }
-      cout << endl;
-    } 
-
-    vector<bool> visited(numberOfNodes+1, false);
-
-    vector<int> ordering = topologicalSort(adjList, startNode);
-
-    for(int node: ordering){
-        cout << node << " ";
     }
+
 
     return 0;
 }
