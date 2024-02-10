@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1707488368 source:d:\coding\dsa\suffixarray\main.cpp
+
+1707504120 source:d:\coding\dsa\suffixarray\suffixarray.cpp
+
+1707505968 source:d:\coding\dsa\suffixarray\substringsearch.cpp
+	<bits/stdc++.h>
+
