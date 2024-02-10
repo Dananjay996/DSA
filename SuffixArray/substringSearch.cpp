@@ -123,6 +123,10 @@ int main(){
     cin >> s;
 
     vector<int> parr = suffixArray(s);
+    for(int num : parr){
+        cout << num << " " << s.substr(num,s.length()-num) << '\n';
+    }
+
     int t;
     cin >> t;
     while(t--){
