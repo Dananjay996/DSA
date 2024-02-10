@@ -78,6 +78,7 @@ void solve(string p, vector<int> &parr,string s,int l, int r){
 }
 
 vector<int> suffixArray(string &s){
+    s += '$';
     int n = s.length();
     vector<int> p(n),c(n);
     {
@@ -123,9 +124,6 @@ int main(){
     cin >> s;
 
     vector<int> parr = suffixArray(s);
-    for(int num : parr){
-        cout << num << " " << s.substr(num,s.length()-num) << '\n';
-    }
 
     int t;
     cin >> t;
