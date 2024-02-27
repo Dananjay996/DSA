@@ -1,38 +1,27 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include <vector>
+#include <ios>
 
-void dfs(vector<vector<int>>& adjList, vector<bool>& visited, int node){
-
-    if(visited[node]) return;
-
-    cout << node << " ";
-    visited[node] = true;
-
-    vector<int> neighbours = adjList[node];
-
-    for(int neighbour : neighbours){
-        dfs(adjList, visited, neighbour);
-    }
-}
+#include "./headers/dfs.h"
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
+    std::cout.tie(NULL);
     
     int numberOfNodes, numberOfEdges, startNode;
-    cin >> numberOfNodes >> numberOfEdges >> startNode;
+    std::cin >> numberOfNodes >> numberOfEdges >> startNode;
 
     //creating adjacency list
-    vector<vector<int>> adjList(numberOfNodes+1);
+    std::vector<std::vector<int>> adjList(numberOfNodes+1);
     for(int i=0; i<numberOfEdges; i++){
         int u,v;
-        cin >> u >> v;
+        std::cin >> u >> v;
         adjList[u].push_back(v);
         adjList[v].push_back(u);
     }
 
-    vector<bool> visited(numberOfNodes+1, false);
+    std::vector<bool> visited(numberOfNodes+1, false);
 
     dfs(adjList, visited, startNode);
 

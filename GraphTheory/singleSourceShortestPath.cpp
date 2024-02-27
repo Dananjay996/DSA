@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+
 
 void dfs(vector<vector<pair<int,int>>> adjlist, vector<bool>& visited, int node, vector<int>& nodesList){
   visited[node] = true;
@@ -60,7 +60,6 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    
     int numberOfNodes, numberOfEdges;
     cin >> numberOfNodes >> numberOfEdges;
     //creating adjacency list

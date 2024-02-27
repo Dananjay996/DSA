@@ -13,6 +13,7 @@ void dfs(std::vector<vector<int>> adjList, vector<bool>& visited, int node, vect
 }
 
 
+#include "./headers/topologicalSort.h"
 /*
      2      4  
  1               6
@@ -59,7 +60,7 @@ int main() {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(NULL);
     std::cout.tie(NULL);
-    int numberOfNodes, numberOfEdges;
+    int numberOfNodes, numberOfEdges, startNode;
     std::cin >> numberOfNodes >> numberOfEdges;
     std::vector<std::vector<int>> adjList(numberOfNodes);
     for(int i=0; i<numberOfEdges; i++){
@@ -67,13 +68,20 @@ int main() {
         std::cin >> u >> v;
         adjList[u].push_back(v);
     } 
-
-    for(int i=0; i<numberOfNodes; i++){
-      std::vector<int> ordering = topologicalSort(adjList,i,i);
-      for(int node: ordering){
-          std::cout << node << " ";
+    for(int i=0; i<numberOfEdges; i++){
+      for(auto v : adjList[i]){
+          std::cout << v << " ";   
       }
-    }
+      std::cout << std::endl;
+    } 
+
+    std::vector<bool> visited(numberOfNodes+1, false);
+
+    std::vector<int> ordering = topologicalSort(adjList, startNode);
+
+    for(int node: ordering){
+        std::cout << node << " ";
+   }
 
 
     return 0;
